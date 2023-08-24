@@ -11,7 +11,7 @@ const Front = () => {
         <button
           type='button'
             onClick={() =>
-              window.open("https://omarmahfud.com", "_blank")
+              window.open("how.html", "_blank")
             }
             className='black_btn'
           >

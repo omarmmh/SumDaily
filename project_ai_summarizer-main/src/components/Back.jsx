@@ -12,6 +12,7 @@ const Back = () => {
   const [copied, setCopied] = useState("");
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
 
+
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(
       localStorage.getItem("articles")
