@@ -15,7 +15,7 @@ const Front = () => {
             }
             className='black_btn'
           >
-          <b>Text Summarizer</b>
+          <b>SumDaily User Guide</b>
         </button>
 
         <button

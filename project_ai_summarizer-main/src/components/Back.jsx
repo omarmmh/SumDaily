@@ -11,22 +11,22 @@ const Back = () => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [copied, setCopied] = useState("");
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
-
+  const GNEWS_API_KEY = '79c2a99ae6a822a756dbaa31641408e2'; 
 
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(
       localStorage.getItem("articles")
     );
-
+  
     if (articlesFromLocalStorage) {
       setAllArticles(articlesFromLocalStorage);
     }
-
-    // Updated fetch to get top headlines from the News API.
-    fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=b689c09a9a614a36a5064438050bd5cf")
+  
+    // Fetch top headlines from the GNews API.
+    fetch(`https://gnews.io/api/v4/top-headlines?lang=en&country=us&token=${GNEWS_API_KEY}`)
       .then(response => response.json())
       .then(data => {
-        if (data.status === "error") {
+        if (data.code === 'error') {
           console.error(data.message); // Log the error message
         } else {
           // Handle the successful data fetch
@@ -37,6 +37,7 @@ const Back = () => {
         console.error("There was an error fetching the data:", error);
       });
   }, []);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
